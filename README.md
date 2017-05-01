@@ -1,4 +1,4 @@
-# MEAN Stack Single Page Application Starter
+# MEAN Stack Movie Search App
 
 This is a repo for a Movie search app with help of IMDB APIs. Just download and install 
 
