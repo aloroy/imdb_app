@@ -8,7 +8,7 @@ var http = require('http');
 
 // configuration ===========================================
 	
-var port = process.env.PORT || 8880; // set our port
+var port = process.env.PORT || 8080; // set our port
 
 // get all data/stuff of the body (POST) parameters
 app.use(bodyParser.json()); // parse application/json 
