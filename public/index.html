@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
+	<title>IMDB Movies</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	
+	<script src="js/controllers/movieDetailsController.js"></script>
+	<script src="js/services/movieDetailFactory.js"></script>
+	<script src="js/directives/movieDetail.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity=  "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	
+</head>
+    <body ng-app="imdbMoviesApp" ng-cloak>
+        <div ng-controller="movieDetailsController" class="container pd0">
+		    <div>
+		       <img class="banner_image" ng-src="/images/imdb_banner.jpg" />
+		    </div>
+			
+			<!-- Enter Movie Name  -->
+			<div class="row pad-top30">
+			    <div class="form-group col-md-8 col-md-offset-3">
+			         <label for="movieTitle"> Movie Name </label>
+                    <input class="movieTitle_input" ng-minlength="1" ng-maxlength="200" ng-model="movieTitle" id="movieTitle" placeholder="Enter Movie Name">
+                     <input class="btn btn-info" type="button" value="Get Movies" ng-click="getMovies(movieTitle)">
+                 </div>    
+            </div>
+            
+             <!-- Showing Total Result Count  -->
+            <div class="row margin0">
+	            <div ng-show="showTotal" class="col-md-12 panel panel-info">
+				    <div class="panel-heading"><span class="col-md-offset-1 bold"> Total {{resultCount}} results found.</span></div>
+				</div>
+			</div>
+			
+            <!-- Iterating Results  -->
+			<div ng-if="reports" class="row margin0">		    
+			    
+			    <div id="movie_scroll" class="col-md-12">
+					<div class="row clear movie-section" ng-repeat="report in reports">
+					   <div class="col-md-3">
+					        <img ng-src="{{report.Poster}}" onerror="this.src='/images/no_poster.jpg'" width="120">
+					   </div>
+					   <div class="col-md-8">
+					       <div> Title : <span class="font20 bold">{{report.Title}} <span> </div>
+						   <div class="pad-top10"> Year: <span class="bold"> {{report.Year}}</span></div>
+						   <div class="pad-top10"> Type: <span class="bold"> {{report.Type}}</span></div>
+						 
+						   <movie-detail movie-id="{{report.imdbID}}"></movie-detail>
+					   </div>
+					</div>
+				</div>
+				
+				<div class="float_img" ng-click="backToTop()">
+			       <img ng-src="/images/back_to_top.jpg" width="60" title="Back to top"/>
+			    </div>
+			    
+		    </div>
+		    
+		    <!-- Welcome section -->
+			<div ng-if="!reports" class="row clear welcome_section">
+			   <div class="col-md-4"></div>
+			   <div class="col-md-6 font37 bold movie-section"> Welcome to IMDB </div>
+			</div>
+			
+			<footer>
+				<div id="spinner" class="spinner">
+					<img ng-src="images/spinner.gif" />
+				</div>
+            </footer>
+        </div>
+    </body>
+</html>

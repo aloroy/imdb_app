@@ -1,0 +1,15 @@
+  
+   <div class="pad-top20"> 
+		<input type="button" class="btn btn-primary detail_button" id="{{movieId}}_btn" value="Show Details" ng-click="getMovieDetail()"/> 				   
+   </div>
+  <div ng-if="detail" id="{{movieId}}_section" class="movie-detail">
+    <div> Release : <span class="bold">{{detail.Released}}</span></div>
+    <div> Runtime : <span class="bold">{{detail.Runtime}}</span></div>
+    <div> Writer : <span class="bold">{{detail.Writer}}</span></div>
+    <div> Director : <span class="bold">{{detail.Director}}</span></div>
+    <div> Actors: <span class="bold">{{detail.Actors}}</span></div>
+    <div> Plot : <span class="bold">{{detail.Plot}}</span></div>
+    <div> Country : <span class="bold">{{detail.Country}}</span></div>
+    <div> Awards : <span class="bold">{{detail.Awards}}</span></div>
+    <div> Production : <span class="bold">{{detail.Production}}</span></div>
+  </div>				   
