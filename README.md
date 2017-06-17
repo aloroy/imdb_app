@@ -1,5 +1,7 @@
 # MEAN Stack Movie Search App
 
+## Not Working currently. IMDB API's are not free anymore.
+
 This is a repo for a Movie search app with help of IMDB APIs. Just download and install 
 
 ## Installation
